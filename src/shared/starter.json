@@ -677,7 +677,6 @@
           "color": "#ffffff",
           "opacity": 1
         },
-        "perPlay": 1,
         "lengthMs": 4000
       }
     ]
@@ -790,7 +789,6 @@
         },
         "inMs": 0,
         "outMs": 0,
-        "perPlay": 0,
         "fit": true
       }
     ],

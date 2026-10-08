@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elements guide · morsel</title>
+    <meta name="description" content="What each morsel element can do, how animation and timing work, and how the pieces combine." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 8'><rect width='16' height='8' fill='%23111'/><circle cx='3' cy='4' r='1.2' fill='%23ffb020'/><circle cx='8' cy='4' r='1.2' fill='%23ff5fa2'/><circle cx='13' cy='4' r='1.2' fill='%233aa0ff'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap">
+        <a class="logo" href="./"><span class="logo-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>morsel</a>
+        <nav class="topnav">
+          <a href="guide.html" aria-current="page">Guide</a>
+          <a href="./#run">Get started</a>
+          <a href="https://github.com/benphelps/morsel">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="guide">
+      <nav class="toc" aria-label="On this page">
+        <p>Basics</p>
+        <a href="#shared">What every element can do</a>
+        <a href="#animating">Animating</a>
+        <a href="#timing">How long a slide plays</a>
+        <p>Elements</p>
+        <a href="#text">Text</a>
+        <a href="#icon">Icon</a>
+        <a href="#image">Image</a>
+        <a href="#shapes">Rectangle, Ellipse, Line</a>
+        <a href="#sparkline">Sparkline</a>
+        <a href="#effect">Effect</a>
+        <a href="#group">Group</a>
+        <a href="#rotator">Rotator</a>
+        <p>Combining</p>
+        <a href="#together">Putting it together</a>
+      </nav>
+
+      <article class="article">
+        <div class="eyebrow">Guide</div>
+        <h1>Elements</h1>
+        <p class="lede">A slide is a 64×32 grid of LEDs that you build from elements: text, icons, images, shapes, charts, effects and two kinds of container. Here's what each one can do, how they animate, and how they combine, so you can tell whether an idea is possible before you start building it.</p>
+
+        <h2 id="shared">What every element can do</h2>
+
+        <h4>Move, resize, recolour and fade</h4>
+        <p>Every element has a box, a colour and an opacity, and all of them can be animated (see <a href="#animating">Animating</a>).</p>
+
+        <h4>Show live data</h4>
+        <p>Anywhere you can type text, you can insert a field from a data source, like <code>{{weather.temp}}</code> or <code>{{clock.time}}</code>. The <strong>Insert data</strong> button lists every field with its current value. Filters tidy values up: <code>{{weather.temp|round}}</code>, <code>{{news.title|upper}}</code>, <code>{{stocks.AAPL.price|comma}}</code>. The <strong>Number format</strong> menu builds number formats for you.</p>
+        <figure class="figure small">
+          <img src="images/insert-data.png" width="343" alt="The Insert data list, showing the clock's fields and their values right now" loading="lazy" />
+          <figcaption>Insert data lists every field with what it holds right now.</figcaption>
+        </figure>
+
+        <h4>Take its colour from data</h4>
+        <p>Under Colour, choose <strong>From data</strong> and pick a number, then pick a colour for when it's above, equal to or below a value. A stock's change can be green when it's up and red when it's down.</p>
+        <figure class="figure wide">
+          <img src="images/colour-from-data.png" alt="A stock's percentage change drawn green, because the Colour section takes it from data: green above 0, red below" loading="lazy" />
+          <figcaption>The change is above 0, so it's drawn green.</figcaption>
+        </figure>
+
+        <h4>Appear only sometimes</h4>
+        <p><strong>Show only if</strong> draws the element only while a field has a value. Put <code>!</code> in front to draw it only while the field is empty. Use a pair of these to show album artwork when there is some, and a music note when there isn't.</p>
+        <figure class="figure wide">
+          <img src="images/show-only-if.png" alt="The Now Playing slide showing album artwork, beside the music-note icon's Show only if section, set to !{{notify.image}} and hidden right now" loading="lazy" />
+          <figcaption>There's artwork, so the music note stays hidden.</figcaption>
+        </figure>
+
+        <h2 id="animating">Animating</h2>
+        <p>Animation works like most motion editors. Move the playhead, then change something: if the element is animated, that change becomes a keyframe at the playhead. Press <strong>Keyframe</strong> to add one by hand. Each keyframe has an easing that shapes the move into it.</p>
+        <ul>
+          <li><strong>Together or Separate.</strong> By default a keyframe records everything about the element at once. Switch an element to <strong>Separate</strong> to give position, size, colour and opacity their own keyframes and timing, so it can fade on a different beat from the one it moves on.</li>
+          <li><strong>Animate…</strong> adds ready-made moves: slide in from an edge, drop in, bounce in or fade in at the playhead; slide or fade out at the end of the slide; or blink.</li>
+          <li><strong>Transitions</strong> play as a slide arrives: cut, crossfade, fade through black, push, cover, reveal, wipe, dissolve or blinds. Each slide sets its own, which plays as it takes over from the slide before.</li>
+        </ul>
+        <figure class="figure medium">
+          <img src="images/separate.png" alt="The timeline with the Icon keyed separately: its own Position, Size, Colour and Opacity rows under it" loading="lazy" />
+          <figcaption>Keyed separately, an element gets a row for each property.</figcaption>
+        </figure>
+
+        <h2 id="timing">How long a slide plays</h2>
+        <p>Each slide has one of two timings, and the timeline looks different for each.</p>
+        <p><strong>Fixed length</strong> plays for a set time. Key anything anywhere. The optional <strong>outro line</strong> marks where the exit starts: keys after it stay pinned to the end, so the exit animation survives if you change the slide's length.</p>
+        <p><strong>Fit to content</strong> lasts as long as its data needs. The timeline splits into three parts:</p>
+        <ul>
+          <li>an <strong>In</strong>, where things arrive;</li>
+          <li>a <strong>Hold</strong>, where everything sits still while text scrolls or a rotator works through its list, and which stretches or shrinks to suit the data;</li>
+          <li>an <strong>Out</strong>, where things leave.</li>
+        </ul>
+        <p>You animate the In and the Out. The Hold has no keys of its own, so the length of the data can never break the animation. <strong>Hold at least</strong> stops a slide with little to say from flashing past.</p>
+        <figure class="figure medium">
+          <img src="images/fit-to-content.png" alt="A slide fitted to its content: keys in the In at the start and the Out at the end, with a Hold as long as needed between them" loading="lazy" />
+          <figcaption>Keys in the In and the Out, and a Hold "as long as needed" between them.</figcaption>
+        </figure>
+
+        <h2 id="elements">The elements</h2>
+
+        <h3 id="text"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 3.5h9 M8 3.5v9.5" /></svg>Text</h3>
+        <p>Text can be static, bound to data, or both: <code>H{{weather.high}}° L{{weather.low}}°</code>. There are about twenty bitmap fonts made for small pixel counts, from tiny 3×5 letters up to big clock digits. <strong>Scale</strong> draws any font at 2×, 3× or 4×.</p>
+        <p>When text doesn't fit its box, <strong>Overflow</strong> decides what happens:</p>
+        <ul>
+          <li><strong>Clip</strong> cuts it off.</li>
+          <li><strong>Wrap</strong> breaks it onto more lines, between words or anywhere.</li>
+          <li><strong>Scroll</strong> moves it, either <strong>sideways</strong> like a ticker or <strong>up</strong> like film credits.</li>
+        </ul>
+        <p>Scrolling text can loop round continuously, ping-pong back and forth, or go <strong>once</strong> and stop at the end. You choose when it starts, how long it pauses and how long it rests at the end so it can be read. Text that already fits stays still.</p>
+        <p>Two settings decide how "once" fits a slide's timing. On a fixed-length slide, <strong>Fill the time</strong> sets the speed for you, so the text finishes just before the slide ends, however long it is; a maximum speed keeps long text readable. On a slide fitted to its content, the text scrolls at its own speed, and the Hold stretches until it's done, so long headlines get more time.</p>
+        <p><strong>Wait while animating</strong> holds the scroll still while the element itself is moving, so text that slides in doesn't start scrolling halfway through its entrance.</p>
+        <figure class="figure wide">
+          <img src="images/text-scroll.png" alt="A news headline set to scroll up once, beside the Overflow section: Scroll, Up, Once, with its speed and rest" loading="lazy" />
+          <figcaption>A headline rolling up once, like film credits.</figcaption>
+        </figure>
+
+        <h3 id="icon"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5.5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 1 0 0-5z M8 1.5v1.5 M8 13v1.5 M1.5 8H3 M13 8h1.5 M3.4 3.4l1.1 1.1 M11.5 11.5l1.1 1.1 M3.4 12.6l1.1-1.1 M11.5 4.5l1.1-1.1" /></svg>Icon</h3>
+        <div class="side-by-side">
+          <div>
+            <p>There are over thirty built-in pixel icons: a full weather set (sun, moon, clouds, rain, snow, thunder, fog, wind), plus arrows, trend triangles, hearts, bells, a calendar, music, mail and a few characters. At 2× and 4× they use detailed hand-drawn art. Tick <strong>Blocky</strong> for chunky doubled pixels instead.</p>
+            <p>An icon's name can come from data: <code>{{weather.icon}}</code> follows the weather, and <code>{{clock.icon}}</code> switches between sun and moon at sunrise and sunset. The moon always shows its real phase. <strong>Use colour</strong> draws an icon in a single colour of your choice.</p>
+          </div>
+          <figure class="figure">
+            <img src="images/icons.png" width="327" alt="The icon picker, with the icon bound to {{clock.icon}}" loading="lazy" />
+          </figure>
+        </div>
+
+        <h3 id="image"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h11v9h-11z M2.5 11l3.5-3.5 3 3 1.5-1.5 3 3 M10.5 6h.01" /></svg>Image</h3>
+        <p>Drop in any image file and it's shrunk to fit the panel. <strong>Native size</strong> maps one image pixel to one LED. An image can also come from data, such as album artwork from the Mac app or a news site's icon. <strong>Tint with colour</strong> colours it.</p>
+
+        <h3 id="shapes"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5h11v7h-11z" /></svg>Rectangle, Ellipse and Line</h3>
+        <p>These are the basic shapes. Rectangles and ellipses can be filled or outlined, and rectangles can have rounded corners. A line runs corner to corner across its box, and can be flipped to slope the other way. Animate a shape's box and it becomes a progress bar, a wipe or a reveal.</p>
+
+        <h3 id="sparkline"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 11l3-4 3 3 3-6.5 4 5" /></svg>Sparkline</h3>
+        <p>A small chart of a list of numbers from your data, such as a stock's prices through the day. You can also type numbers in yourself. Draw it as a line, a filled area or bars. It can colour itself <strong>up or down</strong>, comparing its last value with a baseline such as yesterday's close, which can also be drawn as a line. <strong>Draw in</strong> traces it from left to right as the slide starts.</p>
+        <figure class="figure wide">
+          <img src="images/sparkline.png" alt="A stock's day of prices as a green sparkline, beside its settings: the series, line style, up and down colours, and the previous close as its reference" loading="lazy" />
+          <figcaption>Green, because the price ended above yesterday's close.</figcaption>
+        </figure>
+
+        <h3 id="effect"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L3 6.5 M9.5 2.5L8 6.5 M7 9L5.5 13 M12 9l-1.5 4" /></svg>Effect</h3>
+        <p>Ambient weather and sky across its box: <strong>rain</strong>, <strong>snow</strong>, <strong>stars</strong>, <strong>drifting clouds</strong> or an <strong>overcast</strong> sky. Set it to <strong>From data</strong> and <code>{{weather.effect}}</code> picks the right one for the current weather, including stars on a clear night and nothing at all on a plain day.</p>
+        <p>Density, wind, speed and size change its character. Every showing of the slide gets a different arrangement, so it never repeats exactly.</p>
+        <figure class="figure wide">
+          <img src="images/effect.png" alt="An overcast sky over the moon on the weather slide, with the effect following {{weather.effect}}" loading="lazy" />
+          <figcaption>Overcast tonight, so an overcast sky drifts over the moon.</figcaption>
+        </figure>
+        <p>Effects layer like everything else: put clouds above a sun icon and they drift in front of it, or below text and the text stays readable. Particles change every frame, which makes a slide's file bigger for the device. <strong>Motion</strong> can move them only 10 or 5 times a second to keep files small.</p>
+
+        <h3 id="group"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 2.5h7v7h-7z M6.5 6.5h7v7h-7z" /></svg>Group</h3>
+        <p>A group bundles elements so you can move, fade or animate them as one. Its contents keep their own animations on the same timeline as the slide. Double-click a group to work inside it. <strong>Clip to its box</strong> hides anything that pokes outside the group's box, which is handy for a mask or a reveal.</p>
+
+        <h3 id="rotator"><svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4h8 M2.5 8h11 M2.5 12h6 M12.5 1.8v4.4 M10.8 4.4l1.7 1.8 1.7-1.8" /></svg>Rotator</h3>
+        <p>A rotator shows a <strong>list from your data one item at a time</strong>: headlines, stock tickers, calendar events, anything that's a list. You design the item once, and the rotator fills it in for each entry in turn.</p>
+
+        <h4>Designing the item</h4>
+        <p>Double-click the rotator (or click <strong>Edit items</strong>) to work inside it. The elements you place there make up one item. Use <code>{{item.…}}</code> fields to fill them: <code>{{item.title}}</code>, <code>{{item.price}}</code>, plus <code>{{index}}</code> and <code>{{count}}</code> for "2 of 5". While you're inside, step through real items with the ‹ › arrows at the top of the stage to check the layout against short and long entries. The drawer at the bottom of the inspector lists the current item's fields.</p>
+
+        <h4>Two timelines</h4>
+        <div class="callout">
+          <p>This is the part worth slowing down for. A rotator has a timeline on the outside, like any element, and one of its own on the inside.</p>
+        </div>
+        <p><strong>Outside</strong>, the rotator is one element on the slide's timeline. You can animate its box like anything else, for example sliding the whole list in at the start of the slide. Its row on the timeline shows each item's turn, so you can see when items change over.</p>
+        <figure class="figure medium">
+          <img src="images/rotator-slide.png" alt="A rotator's row on the slide timeline, expanded to show each item's turn and where items change over" loading="lazy" />
+          <figcaption>On the slide: the rotator's row, opened up to show each item's turn.</figcaption>
+        </figure>
+        <p><strong>Inside</strong>, the timeline belongs to <strong>one item</strong>. It starts when the item arrives and ends when it leaves, and every item replays it. Keys you add here are your item animation: a headline rising in, a price fading over to its change.</p>
+        <figure class="figure wide">
+          <img src="images/rotator-inside.png" alt="Inside a stocks rotator: Item 1 of 3 on the stage, one item's 4-second timeline below with its keys, and Each item set to a fixed length on the right" loading="lazy" />
+          <figcaption>Inside: item 1 of 3 on the stage, its own 4-second timeline, and how long each item lasts.</figcaption>
+        </figure>
+
+        <h4>How long each item lasts</h4>
+        <p>It's set inside the rotator, with nothing selected, and works just like a slide:</p>
+        <ul>
+          <li><strong>Fixed length</strong>: every item is up for the same time, keyed anywhere, with an optional outro line.</li>
+          <li><strong>Fit to content</strong>: each item gets an In, a Hold and an Out. The In and the Out are the same for every item, so its entrance and exit look the same every time. Only the Hold changes, lasting as long as that item needs. A long headline scrolls longer than a short one.</li>
+        </ul>
+        <p><strong>Change-over</strong> is how one item hands over to the next: push up, push left, fade or cut. It moves the whole item. For anything fancier, leave it on cut and animate the item's In and Out yourself.</p>
+
+        <h4>How it fits into the slide</h4>
+        <div class="side-by-side">
+          <ul>
+            <li>On a <strong>fit to content</strong> slide, the slide plays one pass through the list, however long that takes with today's data. This is usually what you want.</li>
+            <li>On a <strong>fixed-length</strong> slide, items take turns until the slide ends. An item that wouldn't finish in time doesn't start; the one before it stays up instead. The rotator warns you when the slide is too short to reach every item.</li>
+            <li><strong>Start over after the last item</strong> loops the list. Turn it off to stop on the last item.</li>
+            <li><strong>The next few</strong> shows only one item (or a few) each time the slide comes round, carrying on from where it left off. A news slide can show one fresh headline per pass of the deck.</li>
+            <li><strong>Max items</strong> limits how many are shown, and <strong>When the list is empty</strong> sets what to show instead, such as "No meetings today".</li>
+          </ul>
+          <figure class="figure">
+            <img src="images/rotator-playback.png" width="327" alt="A rotator's Items and Playback sections: its list, how long each item is, which items to show each time, and the change-over" loading="lazy" />
+          </figure>
+        </div>
+
+        <h2 id="together">Putting it together</h2>
+        <p>A few patterns that combine the pieces above:</p>
+        <ul>
+          <li><strong>Weather that knows the time of day.</strong> An icon bound to <code>{{clock.icon}}</code> for the sun or moon, an effect bound to <code>{{weather.effect}}</code> layered just above it, and the temperature on top.</li>
+          <li><strong>A stock ticker.</strong> A rotator over your stocks. Each item has the name, a sparkline of the day's prices coloured up or down, and the price, which fades over to the percentage change halfway through the item. The change takes its colour from data, so it's green when up and red when down.</li>
+          <li><strong>Headlines that roll.</strong> A rotator over the news, fitted to its content. Each headline is text set to scroll <strong>up</strong> once, so long stories get more time.</li>
+          <li><strong>A fallback for missing data.</strong> Two elements in the same spot, one showing only if a field has a value and the other only if it doesn't.</li>
+          <li><strong>Slides that come and go.</strong> In the Deck tab, <strong>Play only when</strong> skips a slide while a field is empty, so a calendar slide plays only when there's a meeting coming up.</li>
+          <li><strong>Your own notifications.</strong> Notifications, Now Playing and Do Not Disturb are slides too. They live in the System tab, and you can redesign them with all the same elements.</li>
+        </ul>
+        <figure class="figure wide">
+          <img src="images/deck.png" alt="The Deck tab: each slide with its Play only when field, and which are playing right now" loading="lazy" />
+          <figcaption>The deck: Weather, News and Calendar each play only while their data is there.</figcaption>
+        </figure>
+      </article>
+    </div>
+
+    <footer class="footer">
+      <div class="wrap">
+        <span>morsel is free for noncommercial use, under the <a href="https://github.com/benphelps/morsel/blob/main/LICENSE.md">PolyForm Noncommercial License</a>.</span>
+        <span><a href="./">Home</a> · <a href="https://github.com/benphelps/morsel">GitHub</a></span>
+      </div>
+    </footer>
+
+    <script>
+      // Highlight the section you're reading in the contents: the last heading scrolled past.
+      const links = [...document.querySelectorAll(".toc a")];
+      const targets = links.map((a) => document.getElementById(a.getAttribute("href").slice(1)));
+      const mark = () => {
+        let current = 0;
+        targets.forEach((t, i) => t && t.getBoundingClientRect().top < 140 && (current = i));
+        links.forEach((a, i) => a.classList.toggle("on", i === current));
+      };
+      addEventListener("scroll", mark, { passive: true });
+      mark();
+    </script>
+  </body>
+</html>

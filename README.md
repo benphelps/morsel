@@ -4,6 +4,8 @@ Design animated slides for your Tidbyt, bind them to live data, and serve them t
 from your own machine. morsel is a visual editor and server for any Tidbyt running the community
 [tronbyt firmware](https://github.com/tronbyt/firmware-esp32).
 
+**[benphelps.github.io/morsel](https://benphelps.github.io/morsel/)** · [Elements guide](https://benphelps.github.io/morsel/guide.html)
+
 ![The morsel editor, deck and system slides](docs/screenshot.png)
 
 ## Highlights
@@ -23,6 +25,9 @@ from your own machine. morsel is a visual editor and server for any Tidbyt runni
   HTTP, pause on Do Not Disturb, and dim at night.
 - **A Mac menu bar app** that forwards macOS notifications, shows what's playing in Music, and sends
   your calendar.
+
+The [elements guide](https://benphelps.github.io/morsel/guide.html) covers every element, how
+animation and timing work, and how the pieces combine.
 
 ## Run it
 

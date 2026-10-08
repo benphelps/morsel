@@ -13,6 +13,7 @@
     "build:server": "esbuild src/server/index.ts --bundle --platform=node --format=esm --packages=external --outfile=dist/server.js",
     "start": "node dist/server.js",
     "fonts": "tsx scripts/build-fonts.ts",
+    "reel": "tsx scripts/build-reel.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test src/shared/*.test.ts src/elements/*.test.ts src/elements/*/*.test.ts src/web/*.test.ts src/server/*.test.ts src/server/plugins/*.test.ts"
   },

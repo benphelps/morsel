@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>morsel: animated slides for your Tidbyt</title>
+    <meta name="description" content="Design animated slides for your Tidbyt, bind them to live data, and serve them to the display from your own machine." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 8'><rect width='16' height='8' fill='%23111'/><circle cx='3' cy='4' r='1.2' fill='%23ffb020'/><circle cx='8' cy='4' r='1.2' fill='%23ff5fa2'/><circle cx='13' cy='4' r='1.2' fill='%233aa0ff'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap">
+        <a class="logo" href="./"><span class="logo-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>morsel</a>
+        <nav class="topnav">
+          <a href="guide.html">Guide</a>
+          <a href="#run">Get started</a>
+          <a href="https://github.com/benphelps/morsel">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="eyebrow">For Tidbyt displays running tronbyt firmware</div>
+        <h1>Animated slides for your <em>Tidbyt</em>.</h1>
+        <p class="lede">Design them on a timeline, fill them with live data, and serve them to the display from your own machine.</p>
+        <div class="actions">
+          <a class="btn primary" href="#run">Get started</a>
+          <a class="btn" href="guide.html">Read the guide</a>
+        </div>
+
+        <div class="reel" data-reel>
+          <div class="stagebox">
+            <canvas class="glow" data-glow aria-hidden="true"></canvas>
+            <div class="device">
+              <canvas data-panel role="img" aria-label="A Tidbyt playing morsel's starter deck: a clock, the weather, stocks, Now Playing, news and the next meeting"></canvas>
+            </div>
+          </div>
+          <div class="reel-bar">
+            <button class="reel-toggle" data-toggle aria-pressed="false">Pause</button>
+            <div class="reel-track" data-track>
+              <div class="reel-playhead" data-playhead></div>
+            </div>
+          </div>
+          <p class="reel-note">The starter deck every new project comes with, drawn frame by frame by morsel's renderer: exactly what the panel shows.</p>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <div class="eyebrow">What it does</div>
+          <h2>A real editor for a 64×32 screen.</h2>
+          <p>Everything you'd expect from a motion editor, built for a display with 2,048 pixels.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text">
+            <span class="tag">Timeline</span>
+            <h3>Animate it like a motion editor</h3>
+            <p>Keyframes with easing, separate tracks for position, size, colour and opacity, ready-made moves, and nine transitions between slides.</p>
+            <p>Slides can fit themselves to their content: an In, a Hold as long as the data needs, then an Out, so long headlines simply get more time.</p>
+          </div>
+          <figure class="shot"><img src="images/separate.png" alt="The timeline, with one element's position, size, colour and opacity on separate rows" loading="lazy" /></figure>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text">
+            <span class="tag">Live data</span>
+            <h3>Bind anything to live data</h3>
+            <p>Text, colours, icons and images can all come from the clock, weather, news, stocks, crypto, Home Assistant, your Mac's calendar or any JSON API.</p>
+            <p>Pick fields from a list instead of typing paths, and let numbers choose colours: green when a stock is up, red when it's down.</p>
+          </div>
+          <figure class="shot"><img src="images/colour-from-data.png" alt="A stock's change drawn green, with its colour taken from data" loading="lazy" /></figure>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text">
+            <span class="tag">Lists</span>
+            <h3>Cycle through lists</h3>
+            <p>A rotator shows a list one item at a time: headlines, tickers, meetings. Design one item, animate it once, and every item plays it.</p>
+          </div>
+          <figure class="shot"><img src="images/rotator-inside.png" alt="Inside a rotator: one stock on the stage and the item's own timeline" loading="lazy" /></figure>
+        </div>
+
+        <div class="feature">
+          <div class="feature-text">
+            <span class="tag">Effects</span>
+            <h3>Weather you can see</h3>
+            <p>Rain, snow, stars, drifting clouds and overcast skies that follow the real weather, with a sun or moon icon that knows the time of day and the moon's phase.</p>
+          </div>
+          <figure class="shot"><img src="images/effect.png" alt="An overcast sky over the moon on the weather slide" loading="lazy" /></figure>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3><span class="dot" style="background: var(--accent)"></span>What you see is what it shows</h3>
+            <p>One renderer drives the editor and the display, and the Device tab mirrors the panel live.</p>
+          </div>
+          <div class="card">
+            <h3><span class="dot" style="background: var(--pink)"></span>Decks and interrupts</h3>
+            <p>Play slides only when there's data for them, push notifications over HTTP, pause for Do Not Disturb and dim at night.</p>
+          </div>
+          <div class="card">
+            <h3><span class="dot" style="background: var(--blue)"></span>A Mac menu bar app</h3>
+            <p>Forwards macOS notifications, shows what's playing in Music, and sends your calendar to the display.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="run wrap" id="run">
+        <div>
+          <div class="eyebrow">Get started</div>
+          <h2>Running in a minute.</h2>
+          <p>morsel runs on any machine on your network. A new project starts with the deck above, ready to play.</p>
+          <p>Then point the display at it, and the Device tab shows the exact address and whether it's connected.</p>
+          <p><a href="guide.html">Read the guide</a> to see what each element can do.</p>
+        </div>
+        <div class="steps">
+          <div>
+            <div class="step-label">With Docker</div>
+            <pre><code>git clone https://github.com/benphelps/morsel
+cd morsel
+echo "PUBLIC_HOST=192.168.1.20" &gt; .env   # this machine's LAN address
+docker compose up -d --build</code></pre>
+          </div>
+          <div>
+            <div class="step-label">Point the Tidbyt at it (its image URL)</div>
+            <pre><code>ws://&lt;host&gt;:8000/device/ws</code></pre>
+          </div>
+          <div>
+            <div class="step-label">Or for development</div>
+            <pre><code>npm install
+npm run dev   # editor on :5180, server on :8000</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <span>morsel is free for noncommercial use, under the <a href="https://github.com/benphelps/morsel/blob/main/LICENSE.md">PolyForm Noncommercial License</a>.</span>
+        <span><a href="guide.html">Guide</a> · <a href="https://github.com/benphelps/morsel">GitHub</a> · <a href="https://github.com/tronbyt/firmware-esp32">tronbyt firmware</a></span>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { playReel } from "./assets/reel.js";
+      playReel(document.querySelector("[data-reel]"));
+    </script>
+  </body>
+</html>
