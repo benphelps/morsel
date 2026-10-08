@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mac app · morsel</title>
+    <meta name="description" content="A menu bar app that puts what you're playing, your notifications and your next meeting on your Tidbyt." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 8'><rect width='16' height='8' fill='%23111'/><circle cx='3' cy='4' r='1.2' fill='%23ffb020'/><circle cx='8' cy='4' r='1.2' fill='%23ff5fa2'/><circle cx='13' cy='4' r='1.2' fill='%233aa0ff'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/site.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap">
+        <a class="logo" href="./"><span class="logo-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>morsel</a>
+        <nav class="topnav">
+          <a href="mac.html" aria-current="page">Mac app</a>
+          <a href="guide.html">Guide</a>
+          <a href="https://github.com/benphelps/morsel">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="eyebrow">Mac menu bar app</div>
+        <h1>Your Mac, on your <em>Tidbyt</em>.</h1>
+        <p class="lede">A small menu bar app that puts what you're listening to, the notifications you care about and your next meeting on the display, and quiets it down when you need to focus.</p>
+        <div class="actions">
+          <a class="btn primary" href="#set-up">Set it up</a>
+          <a class="btn" href="https://github.com/benphelps/morsel/tree/main/mac">Source</a>
+        </div>
+
+        <div class="mac-hero">
+          <div>
+            <div class="pane-label">On your Mac</div>
+            <div class="desk">
+              <div class="menubar" aria-hidden="true">
+                <span class="mb-icon"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 6.5a9 9 0 0 1 12 0 M4.2 9a6 6 0 0 1 7.6 0 M6.5 11.4a2.6 2.6 0 0 1 3 0" /></svg>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1.5" y="4.5" width="11" height="7" rx="2" /><path d="M14.5 7v2" stroke-linecap="round" /><rect x="3" y="6" width="6.5" height="4" rx="1" fill="currentColor" stroke="none" /></svg>
+                <span>Thu 8 Oct 9:35</span>
+              </div>
+              <img class="menu-shot" src="images/mac-menu.png" width="340" alt="The morsel menu: connected and showing Weather, Do Not Disturb off, Now Playing, notification forwarding for two apps and Calendar on, with recent items: a Radiohead track, a message from Mom and a shipped order" />
+            </div>
+          </div>
+          <div class="tidbyt reel" data-reel>
+            <div class="pane-label">On your Tidbyt</div>
+            <div class="stagebox">
+              <canvas class="glow" data-glow aria-hidden="true"></canvas>
+              <div class="device">
+                <canvas data-panel role="img" aria-label="The Tidbyt showing Now Playing with album artwork, then a message from Mom, then a doorbell alert"></canvas>
+              </div>
+            </div>
+            <div class="reel-bar">
+              <button class="reel-toggle" data-toggle aria-pressed="false">Pause</button>
+              <div class="reel-track" data-track>
+                <div class="reel-playhead" data-playhead></div>
+              </div>
+            </div>
+            <p>A new song, a message from someone you've chosen, and an alert sent from anywhere with <code>/api/notify</code>. Each one interrupts the deck for a few seconds, then the deck carries on where it left off.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <div class="eyebrow">What it does</div>
+          <h2>Four things, each a switch in the menu.</h2>
+          <p>Turn on only what you want. Everything goes straight to your own morsel server; nothing leaves your network.</p>
+        </div>
+
+        <div class="mac-feature">
+          <div>
+            <h3>Now Playing</h3>
+            <p>When a new track starts in the Music app, its artwork, title and artist appear on the display for a few seconds.</p>
+            <p>The first time, macOS asks whether morsel may control Music. That's how it reads the artwork. To send whatever's playing right now, use <strong>Send the current track</strong> in Settings.</p>
+          </div>
+          <div>
+            <h3>Do Not Disturb</h3>
+            <p>Pauses the display on one calm slide and holds back notifications and Now Playing until it's over.</p>
+            <p>Turn it on from the menu until you turn it off, for 30 minutes, an hour or two, or until the meeting you're in ends.</p>
+          </div>
+        </div>
+
+        <div class="mac-feature">
+          <div>
+            <h3>Notifications</h3>
+            <p>Choose which apps' notifications appear on the display. Each one shows with the app's icon, its title and the message.</p>
+            <ul>
+              <li><strong>Apps to forward</strong> lists every app that has posted a notification. Turn on the ones you want.</li>
+              <li><strong>Recently seen</strong> shows what arrived and what happened to it. One click forwards an app you missed.</li>
+              <li><strong>Send a test notification</strong> checks the whole path to the display.</li>
+            </ul>
+            <p>macOS doesn't let apps read other apps' notifications directly, so morsel reads Notification Center's database. That needs Full Disk Access, and the app walks you through granting it.</p>
+          </div>
+          <figure class="window">
+            <div class="window-bar"><i></i><i></i><i></i><span>Notifications</span></div>
+            <img src="images/mac-notifications.png" alt="Notification settings: watching for notifications, Messages and Mail forwarded, Reminders and FaceTime not, and a list of recently seen notifications with what happened to each" loading="lazy" />
+          </figure>
+        </div>
+
+        <div class="mac-feature">
+          <div>
+            <h3>Calendar</h3>
+            <p>Sends today's remaining events to morsel as the <code>calendar</code> data source. It updates whenever your calendars change, and every minute.</p>
+            <p>Choose which calendars count. The starter deck's Calendar slide uses it straight away, showing your next meeting and how long until it starts, and plays only on days with events (<code>{{calendar.hasEvents}}</code>).</p>
+          </div>
+          <figure class="window">
+            <div class="window-bar"><i></i><i></i><i></i><span>Calendar</span></div>
+            <img src="images/mac-calendar.png" alt="Calendar settings: sending today's events, two left with Standup next at 10:00, and the Work, Home and Birthdays calendars all included" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section wrap" id="set-up">
+        <div class="section-head">
+          <div class="eyebrow">Set it up</div>
+          <h2>Five minutes, once.</h2>
+          <p>The app needs macOS 14 or later and a morsel server it can reach.</p>
+        </div>
+
+        <ol class="steps-list">
+          <li>
+            <strong>Build and install it.</strong> There's no signed download yet, so for now it's built from source, which needs Xcode and XcodeGen. The script installs it to <code>~/Applications</code> and opens it.
+            <pre><code>brew install xcodegen
+mac/install.sh</code></pre>
+          </li>
+          <li>
+            <strong>Connect it to your server.</strong> Open <strong>Settings… → General</strong> and enter the server's address. The default, <code>http://localhost:8000</code>, is right when morsel runs on the same Mac. Status turns green once the Tidbyt is connected. While you're there, turn on <strong>Open at login</strong>.
+          </li>
+          <li>
+            <strong>Turn on what you want</strong> from the menu: Now Playing, notifications, Calendar.
+          </li>
+          <li>
+            <strong>Allow what macOS asks for.</strong> Each feature asks only when you first use it: Music for Now Playing, Calendars (full access) for Calendar, and Full Disk Access for notifications. For Full Disk Access, the app opens the right page in System Settings with a small window to drag morsel into the list. It closes by itself once access is on.
+          </li>
+          <li>
+            <strong>Choose apps to forward.</strong> In <strong>Settings… → Notifications</strong>, turn on the apps you want on the display, then send a test notification.
+          </li>
+        </ol>
+        <div class="note">
+          <strong>Rebuilding?</strong> Builds are signed for your Mac only, so macOS may ask for permissions again after a rebuild. With an Apple developer account, put <code>MORSEL_TEAM=&lt;your team ID&gt;</code> in the repo's <code>.env</code> and they'll stick.
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <div class="eyebrow">Good to know</div>
+          <h2>What to expect.</h2>
+        </div>
+        <div class="mac-feature">
+          <div>
+            <h3>The menu's status dot</h3>
+            <div class="status-dots">
+              <div><i style="background: var(--ok, #32d46a)"></i>Connected, and showing the slide named under the title.</div>
+              <div><i style="background: #ff9f0a"></i>The server is up, but the Tidbyt isn't connected to it.</div>
+              <div><i style="background: #ff5b5b"></i>The app can't reach the server. Check the address in Settings.</div>
+            </div>
+            <h3 style="margin-top: 32px">Design what appears</h3>
+            <p>Now Playing, notifications and messages are slides too. Change how they look in the editor's System tab, with all the same elements. See the <a href="guide.html#together">guide</a>.</p>
+          </div>
+          <div>
+            <h3>Privacy</h3>
+            <p>Notifications go only to your morsel server, on your network. The app keeps a short log of what it forwarded, with the app's name and the outcome but never the message.</p>
+            <h3 style="margin-top: 32px">macOS updates</h3>
+            <p>Notification Center's database isn't a public API, so a macOS update can change it. If forwarding stops working, the Notifications settings say so instead of failing silently. Now Playing, Calendar and Do Not Disturb don't depend on it.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <span>morsel is free for noncommercial use, under the <a href="https://github.com/benphelps/morsel/blob/main/LICENSE.md">PolyForm Noncommercial License</a>.</span>
+        <span><a href="./">Home</a> · <a href="guide.html">Guide</a> · <a href="https://github.com/benphelps/morsel">GitHub</a></span>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { playReel } from "./assets/reel.js";
+      playReel(document.querySelector("[data-reel]"), "reel-mac");
+    </script>
+  </body>
+</html>

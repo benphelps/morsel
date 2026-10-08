@@ -3,7 +3,7 @@
 const W = 64;
 const H = 32;
 
-export async function playReel(root) {
+export async function playReel(root, name = "reel") {
   const panel = root.querySelector("[data-panel]");
   const glow = root.querySelector("[data-glow]");
   const track = root.querySelector("[data-track]");
@@ -11,7 +11,7 @@ export async function playReel(root) {
   const toggle = root.querySelector("[data-toggle]");
   const base = new URL(".", import.meta.url);
 
-  const [meta, sheet] = await Promise.all([fetch(new URL("reel.json", base)).then((r) => r.json()), loadImage(new URL("reel.png", base))]);
+  const [meta, sheet] = await Promise.all([fetch(new URL(`${name}.json`, base)).then((r) => r.json()), loadImage(new URL(`${name}.png`, base))]);
   const pixels = readPixels(sheet);
   const starts = [];
   meta.delays.reduce((t, d) => (starts.push(t), t + d), 0);

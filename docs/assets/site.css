@@ -678,3 +678,244 @@ pre code {
     scroll-behavior: auto;
   }
 }
+
+/* ---------- the Mac app page ---------- */
+
+.mac-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: stretch;
+  max-width: 1040px;
+  margin: 56px auto 0;
+  text-align: left;
+}
+.pane-label {
+  font: 600 11px/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 12px;
+}
+/* A Mac desktop: wallpaper, a menu bar, and the app's menu open under its icon. */
+.desk {
+  position: relative;
+  height: 100%;
+  min-height: 520px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(120% 90% at 85% 10%, #3a2f6b 0%, transparent 55%),
+    radial-gradient(90% 80% at 10% 100%, #13456b 0%, transparent 60%),
+    linear-gradient(160deg, #1d2238, #0d1220);
+}
+.menubar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  height: 28px;
+  padding: 0 14px;
+  background: rgba(20, 22, 30, 0.55);
+  backdrop-filter: blur(20px);
+  font: 500 12.5px var(--font);
+  color: #e9ecf2;
+}
+.menubar .mb-icon {
+  display: grid;
+  grid-template-columns: repeat(3, 4px);
+  gap: 2px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.menubar .mb-icon i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
+.menubar svg {
+  width: 15px;
+  height: 15px;
+  opacity: 0.9;
+}
+.desk .menu-shot {
+  position: absolute;
+  top: 34px;
+  right: 74px;
+  width: 340px;
+  max-width: calc(100% - 24px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.tidbyt {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tidbyt .stagebox {
+  margin: 0;
+  max-width: none;
+  flex: none;
+}
+.tidbyt .reel-bar {
+  margin-top: 14px;
+  max-width: none;
+}
+.tidbyt p {
+  color: var(--dim);
+  font-size: 15px;
+  margin: 18px 0 0;
+}
+/* A macOS window around a settings pane. */
+.window {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #3a3d44;
+  background: #1e1e1e;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+.window-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 12px;
+  background: #2a2a2c;
+  border-bottom: 1px solid #111;
+  font: 600 12.5px var(--font);
+  color: #c8cad0;
+}
+.window-bar i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+.window-bar i:nth-child(2) {
+  background: #febc2e;
+}
+.window-bar i:nth-child(3) {
+  background: #28c840;
+}
+.window-bar span {
+  margin: 0 auto;
+  transform: translateX(-24px);
+}
+.window img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mac-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: start;
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+}
+.mac-feature h3 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+}
+.mac-feature p,
+.mac-feature li {
+  color: var(--dim);
+}
+.mac-feature p {
+  margin: 10px 0 0;
+}
+.mac-feature ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+.mac-feature li {
+  margin: 6px 0 0;
+}
+.steps-list {
+  counter-reset: step;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.steps-list > li {
+  counter-increment: step;
+  position: relative;
+  padding: 18px 20px 18px 62px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--dim);
+}
+.steps-list > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 20px;
+  top: 17px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 16%, var(--panel));
+  color: var(--accent);
+  font: 600 13px var(--mono);
+}
+.steps-list strong {
+  color: var(--text);
+}
+.steps-list pre {
+  margin-top: 12px;
+}
+.note {
+  margin-top: 24px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  background: color-mix(in srgb, var(--accent) 6%, var(--panel));
+  color: var(--dim);
+  font-size: 15px;
+}
+.note strong {
+  color: var(--text);
+}
+.status-dots {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.status-dots div {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  color: var(--dim);
+}
+.status-dots i {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transform: translateY(-1px);
+}
+@media (max-width: 880px) {
+  .mac-hero,
+  .mac-feature {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .desk {
+    min-height: 480px;
+  }
+  .desk .menu-shot {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

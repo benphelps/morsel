@@ -79,7 +79,8 @@ system slides, designed in the editor like any other.
 mac/install.sh
 ```
 
-Forwarding notifications needs Full Disk Access, which the app walks you through. Add
+Forwarding notifications needs Full Disk Access, which the app walks you through. The
+[Mac app page](https://benphelps.github.io/morsel/mac.html) covers set-up and what to expect. Add
 `MORSEL_TEAM=<your Apple team ID>` to `.env` to sign with your team, so permissions survive rebuilds.
 
 ## Extending
