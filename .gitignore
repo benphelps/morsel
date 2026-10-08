@@ -1,0 +1,20 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# The server's project, data and play counts (see DATA_DIR)
+data/
+
+# Mac app: build output and the Xcode project xcodegen generates from project.yml
+mac/build/
+mac/*.xcodeproj/
+xcuserdata/
+
+# Local settings and editor/OS files
+.env
+.env.*
+.claude/
+.vscode/
+.idea/
+*.log
+.DS_Store

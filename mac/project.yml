@@ -1,0 +1,52 @@
+name: Morsel
+options:
+  bundleIdPrefix: io.phelps
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    # Signed for this Mac only; install.sh signs with your Apple team instead when MORSEL_TEAM is set.
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    SWIFT_VERSION: "6.0"
+    # App code is UI code: default everything to the main actor.
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    ENABLE_HARDENED_RUNTIME: YES
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    DEAD_CODE_STRIPPING: YES
+targets:
+  Morsel:
+    type: application
+    platform: macOS
+    sources:
+      - path: Morsel
+    info:
+      path: Morsel/Info.plist
+      properties:
+        CFBundleName: morsel
+        CFBundleDisplayName: morsel
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+        LSApplicationCategoryType: public.app-category.utilities
+        # Menu bar only: no Dock icon.
+        LSUIElement: true
+        NSAppleEventsUsageDescription: morsel reads the current track and its artwork from Music to show them on your Tidbyt.
+        NSLocalNetworkUsageDescription: morsel sends notifications to your morsel server on the local network.
+        NSCalendarsFullAccessUsageDescription: morsel shows today's events from your calendars on your Tidbyt.
+        NSCalendarsUsageDescription: morsel shows today's events from your calendars on your Tidbyt.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+          NSAllowsLocalNetworking: true
+    entitlements:
+      path: Morsel/Morsel.entitlements
+      properties:
+        com.apple.security.automation.apple-events: true
+        com.apple.security.personal-information.calendars: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.phelps.morsel
+        PRODUCT_NAME: morsel
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO

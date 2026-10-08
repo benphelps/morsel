@@ -1,0 +1,15 @@
+services:
+  morsel:
+    build: .
+    container_name: morsel
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      # This machine's LAN address, shown in the editor as the URL to give the device.
+      # Set it (and TZ) in a .env file next to this one, e.g. PUBLIC_HOST=192.168.1.20
+      PUBLIC_HOST: ${PUBLIC_HOST:-}
+      # Default time zone for new projects and the server log.
+      TZ: ${TZ:-UTC}
+    restart: unless-stopped
